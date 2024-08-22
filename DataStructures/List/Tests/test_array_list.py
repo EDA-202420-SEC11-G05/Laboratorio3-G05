@@ -17,7 +17,6 @@ def test_new_list():
     assert lista["elements"] == []
 
 
-@pytest.mark.skip(reason="No implementado aun")
 def test_add_first():
     lista = setup_tests()
 
@@ -29,7 +28,6 @@ def test_add_first():
     assert lista["elements"] == [3, 2, 1]
 
 
-@pytest.mark.skip(reason="No implementado aun")
 def test_add_last():
     lista = setup_tests()
 
@@ -51,8 +49,7 @@ def test_is_empty():
     assert lt.is_empty(lista) == False
 
 
-@pytest.mark.skip(reason="No implementado aun")
-def test_get_size():
+def test_size():
     lista = setup_tests()
 
     assert lt.size(lista) == 0
@@ -62,8 +59,7 @@ def test_get_size():
     assert lt.size(lista) == 1
 
 
-@pytest.mark.skip(reason="No implementado aun")
-def test_get_first_element():
+def test_first_element():
 
     lista = setup_tests()
 
@@ -85,7 +81,6 @@ def test_get_last_element():
     assert lt.last_element(lista) == 1
 
 
-@pytest.mark.skip(reason="No implementado aun")
 def test_get_element():
 
     lista = setup_tests()
