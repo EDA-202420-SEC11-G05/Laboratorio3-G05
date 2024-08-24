@@ -87,11 +87,16 @@ def load_tags(catalog):
     # TODO Implementar la carga de los tags
 
 
-def load_books_tags(catalog):
+def load_books_tags(catalog,filename):
     """
     Carga la información que asocia tags con libros.
     """
-    # TODO Implementar la carga de los book_tags
+    booktagfile = os.path.join(data_dir, filename)
+    input_file = csv.Dictreader(open(booktagfile, encoding="utf-8"))
+    catalog = create_book_tag_list(catalog)
+    for booktag in input_file:
+        add_book_tag(catalog,booktag)
+    return book_tag_size(catalog)
 
 
 # Funciones de consulta sobre el catálogo
@@ -207,15 +212,16 @@ def book_size(catalog):
 
 
 def author_size(catalog):
-    # TODO Implementar la función de tamaño de autores
+    return lt.size(catalog["authors"])
+    
 
 
 def tag_size(catalog):
-    # TODO Implementar la función de tamaño de tags
+    return lt.size(catalog["tags"])
 
 
 def book_tag_size(catalog):
-    # TODO Implementar la función de tamaño de book_tags
+    return lt.size(catalog["book_tags"])
 
 
 # Funciones utilizadas para comparar elementos dentro de una lista
