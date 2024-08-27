@@ -33,7 +33,7 @@ data_dir = os.path.dirname(os.path.realpath('__file__')) + '/Data/'
 """
 El controlador se encarga de mediar entre la vista y el modelo.
 """
-
+#To do
 def new_logic():
     """
     Inicializa el catálogo de libros. Crea una lista vacia para guardar
@@ -47,24 +47,26 @@ def new_logic():
                'book_tags': None}
     
     catalog['books'] = lt.new_list()
-    catalog['authors'] = # TODO Implemente la inicialización de la lista de autores
-    catalog['tags'] = # TODO Implemente la inicialización de la lista de tags
-    catalog['book_tags'] = # TODO Implemente la inicialización de la lista de asociación de libros y tags
+    catalog['authors'] = lt.new_list()
+    catalog['tags'] = lt.new_list()
+    catalog['book_tags'] = lt.new_list()
     return catalog
 
 
 # Funciones para la carga de datos
 
-
+#To do
 def load_data(catalog):
     """
     Carga los datos de los archivos y cargar los datos en la
     estructura de datos
     """
     books, authors = load_books(catalog)
-    # TODO Complete la carga de los tags
-    # TODO Complete la carga de los book_tags
-    return books, authors, tags, booktags
+
+    tags = load_tags(catalog)
+    book_tags = load_books(catalog)
+
+    return books, authors, tags, book_tags
 
 
 def load_books(catalog):
@@ -79,19 +81,37 @@ def load_books(catalog):
         add_book(catalog, book)
     return book_size(catalog), author_size(catalog)
 
-
+#To do
 def load_tags(catalog):
     """
     Carga todos los tags del archivo y los agrega a la lista de tags
     """
     # TODO Implementar la carga de los tags
+    #tags = catalog.get("tags") - IDK if the function could be this way. I have questions with the file in the function of tags_file
+
+    tags_file = data_dir + 'GoodReads/book_tags.csv'
+    input_file = csv.DictReader(open(tags_file, encoding='utf-8'))
+
+    for tag in input_file:
+        add_tag(catalog, tag)
+
+    return tag_size(catalog)    
+
 
 
 def load_books_tags(catalog):
     """
     Carga la información que asocia tags con libros.
     """
-    # TODO Implementar la carga de los book_tags
+    # TODO Implementar la carga de los book_tags - I have the same question with the before function
+    book_tags = data_dir + 'GoodReads/books-small.csv'
+    input_file = csv.DictReader(open(book_tags, encoding='utf-8'))
+
+    for book_tag in input_file:
+        add_book_tag(catalog, book_tag)
+
+    return book_tag_size(catalog)
+
 
 
 # Funciones de consulta sobre el catálogo
