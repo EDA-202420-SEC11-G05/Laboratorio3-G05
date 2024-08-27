@@ -103,7 +103,7 @@ def load_books_tags(catalog):
     """
     Carga la información que asocia tags con libros.
     """
-    # TODO Implementar la carga de los book_tags - I have the same question with the before function
+    # TODO Implementar la carga de los book_tags 
     book_tags = data_dir + 'GoodReads/books-small.csv'
     input_file = csv.DictReader(open(book_tags, encoding='utf-8'))
 
@@ -111,7 +111,6 @@ def load_books_tags(catalog):
         add_book_tag(catalog, book_tag)
 
     return book_tag_size(catalog)
-
 
 
 # Funciones de consulta sobre el catálogo
@@ -227,15 +226,16 @@ def book_size(catalog):
 
 
 def author_size(catalog):
-    # TODO Implementar la función de tamaño de autores
+    return lt.size(catalog["authors"])
+    
 
 
 def tag_size(catalog):
-    # TODO Implementar la función de tamaño de tags
+    return lt.size(catalog["tags"])
 
 
 def book_tag_size(catalog):
-    # TODO Implementar la función de tamaño de book_tags
+    return lt.size(catalog["book_tags"])
 
 
 # Funciones utilizadas para comparar elementos dentro de una lista
