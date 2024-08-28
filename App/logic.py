@@ -134,7 +134,7 @@ def get_best_books(catalog, number):
     libro = lt.get_element(catalog["books"],number)
     pos_book = lt.is_present(catalog["books"], libro , compare_ratings)
     if pos_book > 0:
-        best_book = lt.get_element(libro["average_rating"],pos_book)
+        best_book = lt.get_element(catalog["books"],pos_book)
         return best_book
     return None
 
