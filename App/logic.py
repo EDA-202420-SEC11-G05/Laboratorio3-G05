@@ -131,6 +131,14 @@ def get_best_books(catalog, number):
     Retorna lista con los mejores libros
     """
     # TODO Implementar la función de los mejores libros por rating
+    libro = lt.get_element(catalog["books"],number)
+    pos_book = lt.is_present(catalog["books"], libro , compare_ratings)
+    if pos_book > 0:
+        best_book = lt.get_element(libro["average_rating"],pos_book)
+        return best_book
+    return None
+
+        
 
 
 def count_books_by_tag(catalog, tag):
@@ -138,6 +146,14 @@ def count_books_by_tag(catalog, tag):
     Retorna los libros que fueron etiquetados con el tag
     """
     # TODO Implementar la función de conteo de libros por tag
+    pos_tags = lt.is_present(catalog["tag"],tag, compare_tag_names)
+    if pos_tags > 0:
+        book_with_the_tag = lt.get_element(catalog["tag"], pos_tags)
+        return book_with_the_tag
+    return None
+
+    
+    
 
 
 # Funciones para agregar informacion al catalogo
